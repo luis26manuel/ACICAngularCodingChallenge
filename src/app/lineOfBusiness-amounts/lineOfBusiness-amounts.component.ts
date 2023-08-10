@@ -6,12 +6,11 @@ import { LineOfBusinessService } from "../lineOfBusiness.service";
     selector: 'app-lineOfBusiness-amounts',
     templateUrl: './lineOfBusiness-amounts.component.html',
     styleUrls: [ './lineOfBusiness-amounts.component.css' ]
-  })
+})
 
-  export class LineOfBusinessAmountsComponent implements OnInit {
-    
+export class LineOfBusinessAmountsComponent implements OnInit {
+
     linesOfBusiness: LineOfBusiness[] = [];
-    mostQuoted: LineOfBusiness[] = [];
 
     constructor(private lineOfBusinessService: LineOfBusinessService) { }
 
@@ -19,6 +18,7 @@ import { LineOfBusinessService } from "../lineOfBusiness.service";
         this.getSortedLinesOfBusiness();
     }
 
+    //retieve and sort lines of business in descending order
     getSortedLinesOfBusiness(): void {
         this.lineOfBusinessService.getLinesOfBusiness()
         .subscribe(linesOfBusiness => this.linesOfBusiness = linesOfBusiness.sort((b, a) => (a.amount - b.amount)));
