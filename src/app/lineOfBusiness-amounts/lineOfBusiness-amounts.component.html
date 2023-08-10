@@ -1,0 +1,9 @@
+<h2>Most Quoted Lines of Business</h2>
+<div *ngFor="let lineOfBusiness of linesOfBusiness | slice:0:2; let i=index">
+    {{i + 1}}. {{lineOfBusiness.name}} - 
+    <span *ngIf="lineOfBusiness.amount > 1; else single">{{lineOfBusiness.amount}} Quotes</span>
+    
+    <ng-template #single>
+        {{lineOfBusiness.amount}} Quote
+    </ng-template>    
+</div>
