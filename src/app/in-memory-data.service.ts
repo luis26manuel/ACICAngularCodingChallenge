@@ -8,11 +8,11 @@ import { LineOfBusiness } from './LineOfBusiness';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const linesOfBusiness = [
-      { id: 11, name: 'General Liability', description: 'Liability coverage for businesses.' },
-      { id: 12, name: 'Commercial Property', description: 'Property coverage for businesses.' },
-      { id: 13, name: 'Inland Marine', description: 'Coverage for tools and machinery on job sites.' },
-      { id: 14, name: 'Ocean Marine', description: 'Coverage for dock and boat repair businesses.' },
-      { id: 15, name: 'Garage', description: 'Coverage for auto repairs and car sales.' }
+      { id: 11, name: 'General Liability', description: 'Liability coverage for businesses.', quotes: 0 },
+      { id: 12, name: 'Commercial Property', description: 'Property coverage for businesses.', quotes: 0 },
+      { id: 13, name: 'Inland Marine', description: 'Coverage for tools and machinery on job sites.', quotes: 0 },
+      { id: 14, name: 'Ocean Marine', description: 'Coverage for dock and boat repair businesses.', quotes: 0 },
+      { id: 15, name: 'Garage', description: 'Coverage for auto repairs and car sales.', quotes: 0 }
     ];
 
 
@@ -26,6 +26,15 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 107, quoteNumber: 'AC126PC', lineOfBusiness: 13 },
       { id: 108, quoteNumber: 'AC127PC', lineOfBusiness: 15 }
     ];
+
+    //calculates the number of quotes for each line of business
+    for(let i = 0; i < recentQuotes.length; i++) {
+      for (let j = 0; j < linesOfBusiness.length; j++) {
+        if (recentQuotes[i].lineOfBusiness === linesOfBusiness[j].id) {
+          linesOfBusiness[j].quotes++;
+        }
+      }
+    }
 
     return {linesOfBusiness};
   }

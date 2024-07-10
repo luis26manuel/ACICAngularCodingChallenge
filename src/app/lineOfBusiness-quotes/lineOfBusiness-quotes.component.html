@@ -1,0 +1,4 @@
+<h2>Most Quoted Lines</h2>
+<div *ngFor ="let lineOfBusiness of linesOfBusiness | slice:0:2; let i = index">
+    {{lineOfBusiness.name}} - {{lineOfBusiness.quotes}}
+</div>
